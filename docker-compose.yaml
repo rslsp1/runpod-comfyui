@@ -6,8 +6,8 @@ services:
       context: ./build
       args:
         IMAGE_BASE: ${IMAGE_BASE:-ghcr.io/ai-dock/jupyter-pytorch:2.1.1-py3.10-cuda-11.8.0-base-22.04}
-      tags:
-        - "ghcr.io/ai-dock/comfyui:${IMAGE_TAG:-jupyter-pytorch-2.1.1-py3.10-cuda-11.8.0-base-22.04}"
+          #tags:
+          #- "ghcr.io/ai-dock/comfyui:${IMAGE_TAG:-jupyter-pytorch-2.1.1-py3.10-cuda-11.8.0-base-22.04}"
         
     image: ghcr.io/ai-dock/comfyui:${IMAGE_TAG:-jupyter-pytorch-2.1.1-py3.10-cuda-11.8.0-base-22.04}
     
@@ -48,7 +48,8 @@ services:
       - /etc/group:/etc/group:ro
       - ./config/rclone:/etc/rclone
       ## Workspace
-      - ./workspace:${WORKSPACE:-/workspace/}:rshared
+      #- ./workspace:${WORKSPACE:-/workspace/}:rshared
+      - ./workspace:/workspace
       # You can share /workspace/storage with other non-ComfyUI containers. See README
       #- /path/to/common_storage:${WORKSPACE:-/workspace/}storage/:rshared
       
